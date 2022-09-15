@@ -20,7 +20,7 @@ The following technologies were used for coding:
 7. Angular Material
 8. Angular
 
-To run the project, users should have angular local envirnoment setup.
+To run the project, users should have angular local envirnoment setup. Project Files folder consists of the "src" folder and other required json files. By installling node modules we can run the applicatioin.
 
 Local Setup Prerequiste:
 
