@@ -1,0 +1,60 @@
+<div>
+    <div class="modal" *ngIf="showSpinner">
+        <img class="loader-icon" src="assets/images/loader-unscreen.gif" alt="Loading. Please wait." />
+    </div>
+    <mat-toolbar color="primary">
+        <span class="">Formula One</span>
+    </mat-toolbar>
+    <mat-tab-group>
+        <mat-tab label="Standings"> 
+            <div class="details-body">
+                <mat-accordion>
+                    <mat-expansion-panel [expanded]="panelOpenState" (opened)="panelOpenState = true"
+                        (closed)="panelOpenState = false" (click)="expandPanel()">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Search Standings
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Select Year</mat-label>
+                            <mat-select>
+                                <ng-container *ngFor="let year of years">
+                                    <mat-option (click)="selectedOption(year)" value="year">{{year}}</mat-option>
+                                </ng-container>
+                            </mat-select>
+                          </mat-form-field>
+                        <div class="action-section">
+                            <button id="searchRace" mat-raised-button color="primary" (click)="searchRaceInfo($event)">Search</button>
+                        </div>
+                    </mat-expansion-panel>
+                </mat-accordion>
+                <div>
+                    <div class="race-results-sec">Standings</div>
+                    <div class="results-list">
+                        <ng-container *ngFor="let list of driverStandings; let i = index;">
+                            <mat-card (click)="getWinnersList()" class="mat-card" [ngStyle]="{'border-bottom': getRandomColor()}" >
+                                <div class="list-col-1 relBot17">
+                                    <div class="dr-pos">{{list.position}}</div>
+                                </div>
+                                <div class="list-col-2">
+                                    <div class="dr-name">{{list.Driver.givenName + " " +list.Driver.familyName}}</div>
+                                    <div class="const-name">{{list.Constructors[0].name}}</div>
+                                    <div class="total-wins">{{list.wins}} wins</div>
+                                </div>
+                                <div class="list-col-3" [ngClass]="{'relBot17' : i !== 0}">
+                                    <img *ngIf="i === 0" class="winner-icon" src="assets/images/winner-unscreen.gif" alt="Champion" />
+                                    <div class="dr-pts">{{list.points}} pts</div>
+                                </div>
+                            </mat-card>
+                        </ng-container>
+                    </div>
+                </div>
+                
+                
+            </div>
+        </mat-tab>
+        <mat-tab label="Drivers"><div class="details-body">Details not available. Please try later..!!</div></mat-tab>
+        <mat-tab label="Constructors"><div class="details-body">Details not available. Please try later..!!</div></mat-tab>
+    </mat-tab-group>
+</div>

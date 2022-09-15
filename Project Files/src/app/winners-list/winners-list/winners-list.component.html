@@ -1,0 +1,35 @@
+<div>
+    <div class="modal" *ngIf="showSpinner">
+        <img class="loader-icon" src="assets/images/loader-unscreen.gif" alt="Loading. Please wait." />
+    </div>
+    <mat-toolbar color="primary">
+        <mat-icon (click)="goBack()" class="ic-arrow-back" aria-label="back-icon">arrow_back</mat-icon>
+        <span class="header">Winners</span>
+    </mat-toolbar>
+    <div class="details-body">
+        <div>
+            <div class="results-list">
+                <ng-container *ngFor="let list of winnersData">
+                    <mat-card class="mat-card" [ngStyle]="{'border-bottom': getRandomColor()}" >
+                        <div class="list-col-1 relBot17">
+                            <div>Round</div>
+                            <div class="">{{list.round}}</div>
+                        </div>
+                        <div class="list-col-2">
+                            <div class="bold">{{list.Results[0].Driver.givenName +' '+ list.Results[0].Driver.familyName}}</div>
+                            <div class="">{{list.raceName}}</div>
+                            <div class="">{{list.Results[0].Constructor.name}}</div>
+                        </div>
+                        <div class="list-col-3">
+                            <img class="winner-icon" src="assets/images/winner-unscreen.gif" alt="Champion" />
+                            <div class="dr-pts">{{list.Results[0].points}} pts</div>
+                        </div>
+                    </mat-card>
+                </ng-container>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
